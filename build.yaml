@@ -21,5 +21,3 @@
 include:
   - board: adv360pro_left
   - board: adv360pro_right
-  - board: glove80_lh
-  - board: glove80_rh

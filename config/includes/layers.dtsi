@@ -1,0 +1,5 @@
+/* Basic layer definitions both keyboards can use */
+#define BASE 0    // Main typing layer
+#define LOWER 1   // Lower layer (symbols, function keys)
+#define RAISE 2   // Raise layer (numbers, numpad)
+#define ADJUST 3  // Adjust layer (RGB, BT, bootloader) 

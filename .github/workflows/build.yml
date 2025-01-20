@@ -4,3 +4,10 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      config_path: config
+      config_templates: |
+        boards/glove80/glove80.keymap
+        boards/glove80/glove80.conf
+        boards/adv360pro/adv360pro.keymap
+        boards/adv360pro/adv360pro.conf

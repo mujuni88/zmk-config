@@ -5,6 +5,78 @@
 #include <dt-bindings/zmk/backlight.h>
 
 / {
+    behaviors {
+        #define TYPING_STREAK_TERM 175
+        #define KEY_REPEATING_TERM 300
+        #define REGISTER_MODS_TERM 250
+        #define THUMB_TAPPING_TERM 200
+
+        #define LEFT_HAND_KEYS      \
+          0  1  2  3  4  5  6      \
+         14 15 16 17 18 19 20      \
+         28 29 30 31 32 33         \
+         42 43 44 45 46            \
+         56 57 58 59 60
+
+        #define RIGHT_HAND_KEYS     \
+                     7  8  9 10 11 12 13  \
+                    21 22 23 24 25 26 27  \
+                       34 35 36 37 38 39  \
+                          47 48 49 50 51  \
+                             61 62 63 64 65
+
+        #define THUMB_KEYS          \
+                        40 41 52 53 54 55
+
+        homey_left: miryoku_home_row_mods_left_hand {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_ROW_MODS_LEFT_HAND";
+            flavor = "balanced";
+            hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
+            hold-trigger-on-release;
+            tapping-term-ms = <REGISTER_MODS_TERM>;
+            quick-tap-ms = <TYPING_STREAK_TERM>;
+            global-quick-tap;
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        homey_right: miryoku_home_row_mods_right_hand {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_ROW_MODS_RIGHT_HAND";
+            flavor = "balanced";
+            hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+            hold-trigger-on-release;
+            tapping-term-ms = <REGISTER_MODS_TERM>;
+            quick-tap-ms = <TYPING_STREAK_TERM>;
+            global-quick-tap;
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        index_left: miryoku_home_row_mods_left_index_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_ROW_MODS_LEFT_INDEX_SHIFT";
+            flavor = "balanced";
+            hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
+            tapping-term-ms = <REGISTER_MODS_TERM>;
+            quick-tap-ms = <KEY_REPEATING_TERM>;
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        index_right: miryoku_home_row_mods_right_index_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_ROW_MODS_RIGHT_INDEX_SHIFT";
+            flavor = "balanced";
+            hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+            tapping-term-ms = <REGISTER_MODS_TERM>;
+            quick-tap-ms = <KEY_REPEATING_TERM>;
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -12,7 +84,7 @@
             bindings = <
                 &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
                 &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
-                &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none           &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL           &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp SQT
+                &lt arrow_layer ESC &homey_left LGUI A &homey_left LALT S &homey_left LCTRL D &index_left LSHFT F &kp G  &none           &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL           &none &kp H  &index_right RSHFT J &homey_right RCTRL K &homey_right RALT L &homey_right RGUI SEMI &kp SQT
                 &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                            &kp HOME &kp PG_UP                           &kp N  &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
                 &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
             >;
@@ -42,6 +114,27 @@
                 &none &none        &none        &none        &none        &none        &none             &none &none &bt BT_CLR &none                      &none       &none &none      &none      &none &none &none
                 &none &none        &none        &none        &none        &none                                &none &none                                             &none &none      &none      &none &none &none
                 &none &none        &none        &none        &none                                 &none &none &none &none      &bl BL_TOG &rgb_ug RGB_TOG                   &bl BL_INC &bl BL_DEC &none &none &none
+            >;
+        };
+        arrow_layer {
+            bindings = <
+                &to 0  &trans  &trans  &trans  &trans                                                                       &trans     &trans     &trans  &trans     &trans
+               &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans     &trans     &trans     &trans  &trans     &trans
+               &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans     &trans     &trans     &trans  &trans     &trans
+               &trans  &trans  &trans  &trans  &trans  &trans                                                  &kp LEFT   &kp DOWN     &kp UP  &kp RIGHT  &trans  &kp GRAVE
+               &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans   &kp HOME    &kp END     &trans  &trans     &trans
+               &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans            &kp PG_UP  &kp PG_DN     &trans  &trans     &trans
+            >;
+        };
+
+        nums_layer {
+            bindings = <
+                &to 0     &trans    &trans    &trans     &trans                                                                              &trans      &trans   &trans        &kp F10       &kp F11
+               &trans     &kp F1    &kp F2    &kp F3     &kp F4  &kp F5                                                          &kp F6      &kp F7      &kp F8   &kp F9      &kp PSCRN       &kp F12
+               &trans     &trans    &trans    &trans     &trans  &trans                                                   &kp LS(GRAVE)      &kp N7      &kp N8   &kp N9       &kp BSLH  &kp LS(BSLH)
+               &trans  &kp LCTRL  &kp LALT  &kp LGUI  &kp LSHFT  &trans                                                   &kp LS(EQUAL)      &kp N4      &kp N5   &kp N6      &kp MINUS     &kp GRAVE
+               &trans     &trans    &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans      &kp EQUAL      &kp N1      &kp N2   &kp N3  &kp LS(MINUS)        &trans
+               &trans     &trans    &trans    &trans     &trans          &trans  &trans  &trans  &trans  &kp RET  &kp N0                 &kp LS(N9)  &kp LS(N0)  &kp DOT         &trans        &trans
             >;
         };
     };

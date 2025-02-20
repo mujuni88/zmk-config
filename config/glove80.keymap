@@ -57,6 +57,14 @@
             bindings = <&mo LAYER_Lower>, <&to LAYER_Lower>;
         };
 
+        // Caps-word behavior
+        caps_word: caps_word {
+            compatible = "zmk,behavior-caps-word";
+            label = "CAPS_WORD";
+            #binding-cells = <0>;
+            continue-list = <UNDERSCORE MINUS>;
+        };
+
         homey_left: miryoku_home_row_mods_left_hand {
             compatible = "zmk,behavior-hold-tap";
             label = "HOME_ROW_MODS_LEFT_HAND";

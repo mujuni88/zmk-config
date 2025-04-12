@@ -292,6 +292,7 @@
         arrows_layer {
             bindings = <
   &to DEFAULT  &trans  &trans  &trans  &trans                                                                        &trans        &trans     &trans         &trans        &trans
+ &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans      &trans        &trans     &trans         &trans        &trans
  &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans  &td_lpar_rpar  &td_lbrace_rbrace   &td_lbrack_rbrack  &kp LS(GRAVE)  &kp LS(BSLH)
  &trans  &trans  &trans  &trans  &trans  &trans                                                  &kp LEFT    &kp DOWN        &kp UP  &kp RIGHT      &kp MINUS     &kp GRAVE
  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &td_rpar_lpar  &td_rbrace_lbrace   &td_rbrack_lbrack      &kp UNDER        &trans

@@ -126,6 +126,39 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
+
+        // Tap-dance for brackets/braces
+        td_lbrace_rbrace: tap_dance_lbrace_rbrace {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_LBRACE_RBRACE";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LS(LBKT)>, <&kp LS(RBKT)>;
+        };
+
+        td_lbrack_rbrack: tap_dance_lbrack_rbrack {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_LBRACK_RBRACK";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LBKT>, <&kp RBKT>;
+        };
+
+        td_rbrace_lbrace: tap_dance_rbrace_lbrace {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_RBRACE_LBRACE";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LS(RBKT)>, <&kp LS(LBKT)>;
+        };
+
+        td_rbrack_lbrack: tap_dance_rbrack_lbrack {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_RBRACK_LBRACK";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp RBKT>, <&kp LBKT>;
+        };
     };
 
     macros {
@@ -225,9 +258,9 @@
             bindings = <
   &to DEFAULT  &trans  &trans  &trans  &trans                                                                        &trans        &trans     &trans         &trans        &trans
  &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans      &trans        &trans     &trans         &trans        &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans  &kp LS(N9)  &kp LS(LBKT)   &kp LBKT  &kp LS(GRAVE)  &kp LS(BSLH)
+ &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans  &kp LS(N9)  &td_lbrace_rbrace   &td_lbrack_rbrack  &kp LS(GRAVE)  &kp LS(BSLH)
  &trans  &trans  &trans  &trans  &trans  &trans                                                  &kp LEFT    &kp DOWN        &kp UP  &kp RIGHT      &kp MINUS     &kp GRAVE
- &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp LS(N0)  &kp LS(RBKT)   &kp RBKT      &kp UNDER        &trans
+ &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp LS(N0)  &td_rbrace_lbrace   &td_rbrack_lbrack      &kp UNDER        &trans
  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans             &kp PG_UP     &kp PG_DN     &trans         &trans        &trans
             >;
         };

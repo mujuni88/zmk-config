@@ -25,6 +25,7 @@
 #define KEY_REPEATING_TERM 300
 #define REGISTER_MODS_TERM 250
 #define THUMB_TAPPING_TERM 200
+#define INDEX_SHIFT_TAPPING_TERM 200
 
 // Key positions for hold-tap triggers
 #define LEFT_HAND_KEYS      \
@@ -81,7 +82,7 @@
             label = "HOME_ROW_MODS_LEFT_INDEX_SHIFT";
             flavor = "balanced";
             hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
-            tapping-term-ms = <REGISTER_MODS_TERM>;
+            tapping-term-ms = <INDEX_SHIFT_TAPPING_TERM>;
             quick-tap-ms = <KEY_REPEATING_TERM>;
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
@@ -92,7 +93,7 @@
             label = "HOME_ROW_MODS_RIGHT_INDEX_SHIFT";
             flavor = "balanced";
             hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
-            tapping-term-ms = <REGISTER_MODS_TERM>;
+            tapping-term-ms = <INDEX_SHIFT_TAPPING_TERM>;
             quick-tap-ms = <KEY_REPEATING_TERM>;
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;

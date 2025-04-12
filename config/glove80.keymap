@@ -57,8 +57,7 @@
             hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
             hold-trigger-on-release;
             tapping-term-ms = <REGISTER_MODS_TERM>;
-            quick-tap-ms = <TYPING_STREAK_TERM>;
-            global-quick-tap;
+            quick-tap-ms = <KEY_REPEATING_TERM>;
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
         };
@@ -70,8 +69,7 @@
             hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
             hold-trigger-on-release;
             tapping-term-ms = <REGISTER_MODS_TERM>;
-            quick-tap-ms = <TYPING_STREAK_TERM>;
-            global-quick-tap;
+            quick-tap-ms = <KEY_REPEATING_TERM>;
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
         };

@@ -167,6 +167,24 @@
             tapping-term-ms = <200>;
             bindings = <&kp BSPC>, <&del_word>;
         };
+
+        // Tap dance for parentheses: ( )
+        td_lpar_rpar: tap_dance_lpar_rpar {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_LPAR_RPAR";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LS(N9)>, <&kp LS(N0)>;
+        };
+
+        // Tap dance for parentheses: ) (
+        td_rpar_lpar: tap_dance_rpar_lpar {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_RPAR_LPAR";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LS(N0)>, <&kp LS(N9)>;
+        };
     };
 
     macros {
@@ -274,10 +292,9 @@
         arrows_layer {
             bindings = <
   &to DEFAULT  &trans  &trans  &trans  &trans                                                                        &trans        &trans     &trans         &trans        &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans      &trans        &trans     &trans         &trans        &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans  &kp LS(N9)  &td_lbrace_rbrace   &td_lbrack_rbrack  &kp LS(GRAVE)  &kp LS(BSLH)
+ &trans  &trans  &trans  &trans  &trans  &trans                                                    &trans  &td_lpar_rpar  &td_lbrace_rbrace   &td_lbrack_rbrack  &kp LS(GRAVE)  &kp LS(BSLH)
  &trans  &trans  &trans  &trans  &trans  &trans                                                  &kp LEFT    &kp DOWN        &kp UP  &kp RIGHT      &kp MINUS     &kp GRAVE
- &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp LS(N0)  &td_rbrace_lbrace   &td_rbrack_lbrack      &kp UNDER        &trans
+ &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &td_rpar_lpar  &td_rbrace_lbrace   &td_rbrack_lbrack      &kp UNDER        &trans
  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans             &kp PG_UP     &kp PG_DN     &trans         &trans        &trans
             >;
         };
